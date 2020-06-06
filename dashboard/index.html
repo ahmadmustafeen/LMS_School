@@ -32,6 +32,29 @@
             </div>
         </div>
         <div class="mainbar">
+            <div class="topbar">
+                <button type="submit">Edit Profile</button>
+                <button type="submit">Logout</button>
+            </div>
+            <div class="bar">
+                <div class="mainbarleft">
+                    <h2>
+                        Welcome to LMS of Sturdy's Inn
+                    </h2>
+                    <div class="subjectsection">
+    
+                    </div>
+                    <div class="announcmentsection">
+    
+                    </div>
+                </div>
+                <div class="mainbarright">
+                    <div class="news">
+
+                    </div>
+                </div>
+            </div>
+           
             
         </div>
     </div>
@@ -51,6 +74,8 @@
         background-color: aquamarine;
         width: 100%;
         height: 100vh;
+        display: flex;
+        flex-direction: row;
     }
     .mainside{
         width: 20%;
@@ -96,5 +121,80 @@
         font-size: 24px;
         font-weight: 400;
         color: white;
+    }
+    .mainbar{
+        width: 80%;
+        height: 10%;
+    }
+    .topbar{
+        width: 100%;
+        height: 75px;
+        background-color: rebeccapurple;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .topbar button{
+        margin: 0 20px;
+        width: 150px;
+        height: 40px;
+        font-size: 18px;
+        background-color: rebeccapurple;
+        border: 0;
+        color: white;
+    }
+    .topbar button:hover{
+        background-color: white;
+        color: rebeccapurple;
+        border: 2px solid red;
+    }
+    .mainbarleft{
+        width: 80%;
+        height: 90vh;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: royalblue;
+    }
+    .mainbarleft h2{
+        padding-top: 50px;
+        font-weight: 400;
+        font-size: 34px;
+        text-align: center;
+    }
+    .subjectsection{
+        width: 80%;
+        height: 300px;
+        background-color: violet;
+    }
+    .announcmentsection{
+        width: 80%;
+        height: 200px;
+        background-color: red;
+    }
+    .mainbarright{
+        width: 20%;
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       background-color: rosybrown;
+    }
+    .bar{
+        width: 100%;
+        height: 90vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .news{
+        width: 90%;
+        height: 80%;
+        background-color: saddlebrown;
     }
 </style>

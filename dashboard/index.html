@@ -8,20 +8,35 @@
 </head>
 
 <body>
-    <div class="menubar">
-
-    </div>
-
     <div class="main">
-        <div class="mainleft">
-            <div class="mainleftinner">
-                <div class="mainleftinnertop">
-                    <img src="../assets/images/logo.png" alt="">
+        <div class="mainside">
+            <div class="mainsidelogo">
+                <img src="../assets/images/logo.png" alt="">
+            </div>
+            <div class="mainsideprofile">
+                <div class="mainsideprofileimg">
+                    <img src="../assets/images/profile.jpg" alt="">
                 </div>
+                <h2>
+                    2323923
+                </h2>
+                
+                <h2>
+                    Aiman Khan
+                </h2>
+                
+                <h2>
+                    IV-E
+                </h2>
 
             </div>
         </div>
+        <div class="mainbar">
+            
+        </div>
     </div>
+
+
 </body>
 
 </html>
@@ -32,54 +47,54 @@
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
     }
 
-    .menubar {
-        width: 100%;
-        height: 40px;
-        background-color: rosybrown;
-    }
-
-    .logo {
-        position: fixed;
-        top: 10px;
-        left: 50px;
-        height: 200px;
-        width: 400px;
-    }
-
-    
-
     .main {
+        background-color: aquamarine;
         width: 100%;
-        height: 95vh;
-        background-color: rebeccapurple;
+        height: 100vh;
     }
-
-    .mainleft {
+    .mainside{
         width: 20%;
+        height: 100%;
+        background-color: #343232;
+    }
+    .mainsidelogo{
+        width: 100%;
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
-        height: 100%;
-        background-color: royalblue;
-    }
-
-    .mainleftinner {
-        width: 100%;
-        height: 100%;
-        background-color: gold;
-    }
-
-    .mainleftinnertop {
-        width: 100%;
+        align-items:center;
         height: 30%;
+        background-color: red;
+    }
+    .mainsidelogo img{
+        height: 180px;
+        width: 200px;
+    }
+    .mainsideprofile{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        height: 40%;
+        background-color: firebrick;
+    }
+    .mainsideprofileimg{
+        width: 120px;
+        border-radius: 100%;
+        height: 120px;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: royalblue;
+        background-color: indigo;
     }
-    .mainleftinnertop img {
-        width: 200px;
-        height: 180px;
+    .mainsideprofileimg img{
+        width: 100%;
+        border-radius: 100%;
+        height: 100%;
+    }
+    .mainsideprofile h2{
+        font-size: 24px;
+        font-weight: 400;
+        color: white;
     }
 </style>

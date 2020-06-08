@@ -9,7 +9,7 @@ session_start();
        }
        else
        {
-            $query="select * from user_info where username='".$_POST['UName']."' and upassword='".$_POST['Password']."'";
+            $query="select * from student_email where student_id='".$_POST['UName']."' and student_password='".$_POST['Password']."'";
             $result=mysqli_query($con,$query);
 
             if(mysqli_fetch_assoc($result))

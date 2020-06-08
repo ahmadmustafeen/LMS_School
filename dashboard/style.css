@@ -172,6 +172,7 @@
         width: 45%;
         height: 100%;
         display: flex;
+        padding-top: 10px;
         flex-direction: row;
         justify-content: center;
         align-items: center;
@@ -182,21 +183,27 @@
         background-color: #FFD200;
         transition: linear background-color 0.5s;
     }
-    .column:hover button {
+    .column:hover input {
         color: #0664b6;
         font-weight: 600;
         
     }
 
-    .column button {
-        width: 100px;
+    .column input {
+        width: 1px;
         min-width: fit-content;
+        /* visibility: hidden; */
         font-size: 24px;
         height: 30px;
         transition: linear background-color 0.7s;
-        background-color: transparent;
+        /* background-color: transparent; */
         color: white;
         border: none;
+    }
+    .column >input:checked  + .column{
+        background-color: #FFD200;
+        transition: linear background-color 0.5s;
+        /* color: balc; */
     }
 
     .announcmentsection {
@@ -286,4 +293,68 @@
         color: white;
         margin-top: 20px;
         font-size: 18px;
+    }
+    .video{
+        width: 80%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #0664b6b4;
+    }
+    .youtube{
+        width: 90%;
+        height: 90%;
+    }
+    
+    .container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        margin-right: 40px;
+        user-select: none;
+    }
+    
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+    
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+    
+    }
+    
+    .container:hover input~.checkmark {
+        background-color: #FFD200;
+    }
+    
+    .container input:checked~.checkmark {
+        background-color: #FFD200;
+    }
+    .submit{
+        margin: 0 20px;
+        width: 150px;
+        height: 45px;
+        font-size: 18px;
+        background-color: #FFD200;
+        border: 0;
+        color: black;
+    }
+
+    .submit:hover {
+        background-color: #0664b6;
+        color: #FFD200;
+        border: 2px solid #FFD200;
     }

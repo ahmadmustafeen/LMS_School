@@ -59,7 +59,7 @@ if(isset($_SESSION['User']))
 
                 <marquee behavior="" direction="" style="width: 60%;">
                     <h2 style="color: white;">
-                        Welcome to LMS of Sturdy's Inn in <?php echo $subject_name ?>
+                        Welcome to LMS of Sturdy's Inn
                     </h2>
                 </marquee>
 
@@ -69,7 +69,7 @@ if(isset($_SESSION['User']))
             <div class="bar">
                 <div class="mainbarleft">
                     <h2>
-                        Choose a Subject
+                        Choose a Chapter
                     </h2>
                     <div class="subjectsection">
                         <form action="lecture.php" method="POST">

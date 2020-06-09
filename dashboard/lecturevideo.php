@@ -42,12 +42,15 @@ if(isset($_SESSION['User']))
            <a href="./index.php"><button type="submit">Back to Dashboard</button></a> 
             <marquee behavior="" direction="" style="width: 60%;">
                 <h2 style="color: white;">
-                    Welcome to LMS of Sturdy's Inn <?php echo $video_link ?>
+                    Welcome to LMS of Sturdy's Inn 
                 </h2>
             </marquee>
 
             <button type="submit">Edit Profile</button>
+            <a href="../logout.php">
             <button type="submit">Logout</button>
+            </a>
+            
         </div>
         <div class="bar">
             <div class="lectureleft">

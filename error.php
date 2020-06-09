@@ -1,3 +1,10 @@
+<?php 
+require_once('connection.php');
+
+
+    if(isset($_POST['Login']))
+    {
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,8 +23,8 @@
         <div class="topbar">
             <div class="topbar-inner">
                 <a href="./index.html">News</a>
-                <a href="./register.php">Register A Student</a>
-                <a href="./login.php">Student Portal</a>
+                <a href="./index.html">Register A Student</a>
+                <a href="./index.html">Student Portal</a>
             </div>
         </div>
         <div class="middlebar">
@@ -55,71 +62,19 @@
     <section id="slider">
         <div class="slider">
             <div class="slider-inner">
-                <h2>Educating in this Panademics</h2>
+                <h2>Cannot Create a New Account</h2>
                 <p>
-                    We are not letting our Student's time go to waste.
-                    We have Developed the online system to teach them online.
-                    May Allah Bless Pakistan
+                    UserName Already Exist Kindly Login or apply for new password
                 </p>
-                <button>
-                    Learn More
-                </button>
+                <a href="./login.php">
+                    <button>
+                        Login
+                    </button>
+                </a>
+
             </div>
         </div>
     </section>
-
-    <section id="howto">
-        <div class="howto">
-            <div class="howtoleft">
-                <h2>
-                    Learn How To Access <span style="color:#FFD200;">Online Classes</span>
-                </h2>
-                <button>
-                    Learn More
-                </button>
-            </div>
-            <div class="howtoright">
-                <h2>
-                    Learn How To Register For <span style="color:#FFD200;">Online Classes</span>
-                </h2>
-                <button>
-                    Learn More
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="about">
-            <div class="about-inner">
-                <h2>
-                    WHAT WE VALUE:
-                </h2>
-                <p>
-                    stimulating curiosity. creating a safe and nurturing environment. teaching non-violent means of
-                    problem solving. using real images, and authentic artifacts as visual displays. providing
-                    high-quality materials for art projects. exploring the diversity of our world. giving back to the
-                    community. supporting children helping children
-                </p>
-            </div>
-        </div>
-    </section>
-
-
-
-    <section id="location">
-        <div class="location">
-            <div class="location-inner">
-                <h2>
-                    Visit Us
-                </h2>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14478.266188884572!2d67.0476991!3d24.8786496!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x91470c3fcf684239!2sDawood%20University%20Of%20Engineering%20%26%20Technology%20Karachi!5e0!3m2!1sen!2s!4v1591343929435!5m2!1sen!2s">
-                </iframe>
-            </div>
-        </div>
-    </section>
-
 
     <section id="footer">
         <div class="footer">
@@ -134,7 +89,7 @@
                             <a href="">News</a>
                             <a href="">Blog</a>
                         </div>
-                      
+
                     </div>
 
                 </div>
@@ -152,19 +107,17 @@
             </div>
             <div class="footerside">
                 <div class="footersidetop">
-                    <a href="./login.php">
                     <button>
                         <i class="far fa-user-circle fa-2x"></i>
                         <p>Portal Login</p>
                     </button>
-                </a>
-                    <a href="./register.php">
+                    <a href="">
                         Register
                     </a>
                 </div>
                 <div class="footersidebottom">
                     <p>
-                        © 2020 Sturdy's Inns,  School of Innovation. All Rights Reserved.
+                        © 2020 Sturdy's Inns, School of Innovation. All Rights Reserved.
                     </p>
                     <p>
                         Sturdy Cyber Software
@@ -180,6 +133,12 @@
 </body>
 
 </html>
-<style>
 
-</style>
+
+<?php
+    }
+    else{
+mysqli_close($conn);
+header("location:./login.php");
+ }
+?>

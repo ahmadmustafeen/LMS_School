@@ -14,7 +14,7 @@ if(isset($_SESSION['User']))
     }
     $subject_name=$_POST['subject'];
     $subject_name = strtolower($subject_name);
-    $lecture_info  = mysqli_query($con,"SELECT * FROM $subject_name WHERE  student_class= '$student_class'");
+    $lecture_info  = mysqli_query($con,"SELECT DISTINCT `student_chapter` FROM $subject_name WHERE  student_class= '$student_class'");
     
   
     

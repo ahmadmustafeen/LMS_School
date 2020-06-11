@@ -26,7 +26,7 @@ $basic = "INSERT INTO `student_email`
  ('$student_id','$student_password','$student_name','$student_class','$father_name','$student_mobile')";
 if($con->query($basic)){
     header("location:./login.php");
-break;
+
 }
 else{
 

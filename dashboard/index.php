@@ -11,9 +11,12 @@ if(isset($_SESSION['User']))
 
         $student_name= $row['student_name'];
         $student_class = $row['student_class'];
+        $student_class = strtolower($student_class);
+        $student_class = "class".$student_class;
+        $subject_info  = mysqli_query($con,"SELECT `subject_name` FROM $student_class WHERE  1");
+        $student_class = $row['student_class'];
     }
-
-    $subject_info  = mysqli_query($con,"SELECT `subject_name` FROM `classVIII` WHERE  1");
+        
     
     
     

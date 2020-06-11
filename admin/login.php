@@ -1,75 +1,161 @@
-
+<!DOCTYPE html>
 <html lang="en">
-    
 
 <head>
-        <meta charset="utf-8">
-        <title>Login</title>
-        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../assets/css/typicons.min.css">
-        <link rel="stylesheet" href="../assets/css/varello-theme.min.css">
-        <link rel="stylesheet" href="../assets/css/varello-skins.min.css">
-        <link rel="stylesheet" href="../assets/css/animate.min.css">
-        <link rel="stylesheet" href="../assets/css/icheck-all-skins.css">
-        <link rel="stylesheet" href="../assets/css/icheck-skins/flat/_all.css">
-        <link href='https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600,700,300' rel='stylesheet' type='text/css'>    
-        <link rel="apple-touch-icon" sizes="57x57" href="../assets/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="../assets/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="../assets/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="../assets/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="../assets/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="../assets/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="../assets/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="../assets/apple-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="../assets/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
-        <link rel="manifest" href="../assets/manifest.json">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="../assets/ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">        
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1"></head>
-    <body >
-        <div class="notifications top-right"></div>
-        <div class="wrapper">
-            <div class="page-wrapper">
-                <div id="login-hidden" style="display: none;">
-                    <div class="log-in-wrapper">
-                        <a href="index.php"><h1 class="log-in-title">Welcome to <strong class="text-primary">Earn on </strong>Adds<br><small>Please enter your details</small></h1></a>
-                        
-                                                
-                        <form method="post" action="process.php">
-                            <div class="form-group">
-                                <input type="text" class="form-control input-lg" id="username" name="UName" placeholder="Please enter your username..." required>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control input-lg" id="password" name="Password" placeholder="And your password..." required> 
-                            </div>
-                            
-                            <button type="submit" class="btn btn-transparent btn-lg btn-transparent-primary btn-block" name="Login">
-                                Log In
-                            </button>
-                            <ul class="login-bottom-links">
-                                <!--<li><a href="forgot-password.html">Forgot your password?</a></li>-->
-                                <li><a href="register/index.php">Need an account?</a></li>
-                            </ul>
-                        </form>
-                        
-                    </div>
-                </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type='text/css' href="../assets/style/styles.css">
+    <title>Sturdy's Inn</title>
+
+    <script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section id="menu">
+
+        <div class="topbar">
+            <div class="topbar-inner">
+                <a href="./index.html">News</a>
+                <a href="./index.html">Register A Student</a>
+                <a href="./index.html">Student Portal</a>
             </div>
         </div>
-        <script src="../assets/js/Chart.min.js"></script>
-        <script src="../assets/js/jquery-1.12.3.min.js"></script>
-        <script src="../assets/js/bootstrap.min.js"></script>
-        <script src="../assets/js/jquery.piety.min.js"></script>
-        <script src="../assets/js/varello-theme.js"></script>
-        <script src="../assets/js/icheck.min.js"></script>
-        <script src="../assets/js/dropdown.js"></script>    
-    </body>
+        <div class="middlebar">
+            <div class="middlebar-inner">
+
+                <h1>Sturdy's Inn</h1>
+                <hr>
+                <h3>A Innovation in Progress</h3>
+            </div>
+        </div>
+        <div class="menubar">
+            <div class="menubar-inner">
+                <a href="">
+                    Home
+                </a>
+                <a href="">
+                    About Us
+                </a>
+                <a href="">
+                    News
+                </a>
+                <a href="">
+                    Blogs
+                </a>
+            </div>
+
+
+        </div>
+        <div class="logo">
+            <img src="./assets/images/logo.png" alt="">
+        </div>
+    </section>
+
+
+    <section id="login">
+        <div class="login">
+            <div class="login-inner">
+                <h2>
+                    Admin Portal Login
+                </h2>
+                <form method="post" action="process.php">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="username">Username</label>
+                            </td>
+                            <td>
+                                <input type="text"  id="username" name="UName" placeholder="Admin Username Here" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="password">Password</label>
+                            </td>
+                            <td>
+                                <input type="password" id="password" name="Password" placeholder="Password Here" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for=""></label>
+                            </td>
+                            <td>
+                                <button type="submit"  name="Login">
+                                    Log In
+                                </button>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                        
+                    </div>
+                  
+                    
+                   
+                </form>
+                
+            </div>
+        </div>
+    </section>
+
+<section id="footer">
+    <div class="footer">
+        <div class="footerside">
+            <div class="footersidetop">
+                <div class="footersidetopinner">
+                    <div class="footersidetopinnermenu">
+                        <a href="">Home</a>
+                        <a href="">About Us</a>
+                    </div>
+                    <div class="footersidetopinnermenu">
+                        <a href="">News</a>
+                        <a href="">Blog</a>
+                    </div>
+                  
+                </div>
+
+            </div>
+            <div class="footersidebottom">
+                <p>
+                    New M. A. Jinnah Rd, Jamshed Quarters Muslimabad, Karachi, Karachi City, Sindh 74800
+                </p>
+                <p>
+                    557-5677-6777
+                </p>
+            </div>
+        </div>
+        <div class="footermiddle">
+            <img src="../assets/images/logo.png">
+        </div>
+        <div class="footerside">
+            <div class="footersidetop">
+                <button>
+                    <i class="far fa-user-circle fa-2x"></i>
+                    <p>Portal Login</p>
+                </button>
+                <a href="">
+                    Register
+                </a>
+            </div>
+            <div class="footersidebottom">
+                <p>
+                    © 2020 Sturdy's Inns,  School of Innovation. All Rights Reserved.
+                </p>
+                <p>
+                    Sturdy Cyber Software
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+</body>
 
 </html>
+<style>
+   
+</style>

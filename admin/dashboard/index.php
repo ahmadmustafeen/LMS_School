@@ -52,8 +52,10 @@ if(isset($_SESSION['User']))
                                                 placeholder="Select a Student Class" value="I" disabled selected>Select
                                                 A Query </option>
 
-                                            <option type="radio" id="class" name="admin_author"
+                                                <option type="radio" id="class" name="admin_author"
                                                 placeholder="Select a Student Class" value="I">Add A Lecture</option>
+                                                <option type="radio" id="class" name="admin_author"
+                                                placeholder="Select a Student Class" value="IX">Add A Suject to class</option>
 
                                             <option type="radio" id="class" name="admin_author"
                                                 placeholder="Select a Student Class" value="II">Delete A Lecture

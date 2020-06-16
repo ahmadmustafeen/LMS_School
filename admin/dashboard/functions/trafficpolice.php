@@ -25,6 +25,9 @@ if(isset($_POST['admin_author']))
          case 'VIII':
             header('location:../feedepartment.php');
          break;
+         case 'IX':
+            header('location:../addSubject.php');
+         break;
      }
 }
 else{

@@ -4,18 +4,18 @@ session_start();
 if(isset($_SESSION['User']))
 {
     $student_id = $_SESSION['User'];
+    $subject_name = $_POST['subject'];
+    $subject_name = strtolower($subject_name);
 
 
-    $student_info  = mysqli_query($con,"SELECT `student_name` ,`student_class` FROM `student_email` WHERE student_id = '$student_id'");
+
+    $newsWeb  = mysqli_query($con,"SELECT * FROM `news` ORDER BY date DESC");
+        $student_info  = mysqli_query($con,"SELECT `student_name`, `student_class` FROM `student_details` WHERE student_id = '$student_id'");
     while($row = mysqli_fetch_assoc($student_info)){
-
         $student_name= $row['student_name'];
         $student_class = $row['student_class'];
     }
-    $subject_name=$_POST['subject'];
-    $subject_name = strtolower($subject_name);
-    $lecture_info  = mysqli_query($con,"SELECT DISTINCT `student_chapter` FROM $subject_name WHERE  student_class= '$student_class'");
-    
+    $subject  = mysqli_query($con,"SELECT `student_chapter` FROM `lecture_details` WHERE  student_class = '$student_class' and class_subject = '$subject_name'");
   
     
 
@@ -76,7 +76,7 @@ if(isset($_SESSION['User']))
                             <input type="text" name="subject" style="display:none" value="<?php echo $subject_name ?>">
                             <?php
                                 $check = 2; 
-                                while($row = mysqli_fetch_assoc($lecture_info) ){
+                                while($row = mysqli_fetch_assoc($subject) ){
                                     $chapter_name = $row['student_chapter'];
                                     if($check == 2){
                                         $check = 0;
@@ -133,18 +133,19 @@ if(isset($_SESSION['User']))
                 <div class="news">
                     <h2>Latest News</h2>
                     <div class="newsfeed">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis placeat voluptate
-                            asperiores veritatis accusantium reiciendis nihil enim voluptatibus quaerat delectus?
+                        <?php
+                    while($row = mysqli_fetch_assoc($newsWeb) ){
+                        $news = $row['news'];
+                        $date = $row['date'];
+                        ?>
+                        <p style="width:90%">
+                            <?php echo $news ?>
                         </p>
-                        <h4>02-April-2020</h4>
+                        <h4>
+                            <?php echo $date ?></h4>
                         <hr>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis placeat voluptate
-                            asperiores veritatis accusantium reiciendis nihil enim voluptatibus quaerat delectus?
-                        </p>
-                        <h4>02-April-2020</h4>
-                        <hr>
+                        <?php }  ?>
+
                     </div>
 
                 </div>

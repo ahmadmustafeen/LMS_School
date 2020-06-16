@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,8 +16,8 @@
         <div class="topbar">
             <div class="topbar-inner">
                 <a href="./index.html">News</a>
-                <a href="./index.html">Register A Student</a>
-                <a href="./index.html">Student Portal</a>
+                <a href="./register.php">Register A Student</a>
+                <a href="./login.php">Student Portal</a>
             </div>
         </div>
         <div class="middlebar">
@@ -69,7 +65,7 @@
                                 <label for="username">Student ID</label>
                             </td>
                             <td>
-                                <input type="text"  id="username" name="UName" placeholder="Student ID Here" required>
+                                <input type="text" id="username" name="UName" placeholder="Student ID Here" required>
                             </td>
                         </tr>
                         <tr>
@@ -77,7 +73,8 @@
                                 <label for="password">Password</label>
                             </td>
                             <td>
-                                <input type="password" id="password" name="password" placeholder="Password Here" required>
+                                <input type="password" id="password" name="password" placeholder="Password Here"
+                                    required>
                             </td>
                         </tr>
                         <tr>
@@ -85,7 +82,8 @@
                                 <label for="student_name">Student Name</label>
                             </td>
                             <td>
-                                <input type="text" id="student_name" name="student_name" placeholder="Password Here" required>
+                                <input type="text" id="student_name" name="student_name" placeholder="Student Name Here"
+                                    required>
                             </td>
                         </tr>
                         <tr>
@@ -93,28 +91,58 @@
                                 <label for="class">Class</label>
                             </td>
                             <td>
-                                <select name="student_class" id="class" >
+                                <select name="student_class" id="class">
 
-                                    <option type="radio" id="class" name="student_class" placeholder="Select a Student Class"  value = "I" >I</option>
-                                    
-                                    <option type="radio" id="class" name="student_class" placeholder="Select a Student Class"   value = "II" >II</option>
-                                    
-                                    <option type="radio" id="class" name="student_class" placeholder="Select a Student Class"    value = "III">III</option>
-                                    
-                                    <option type="radio" id="class" name="student_class" placeholder="Select a Student Class"   value = "IV">IV</option>
+                                    <option type="radio" id="class" name="student_class"
+                                        placeholder="Select a Student Class" value="I">I</option>
 
-                                    <option type="radio" id="class" name="student_class" placeholder="Select a Student Class"   value = "V">V</option>
+                                    <option type="radio" id="class" name="student_class"
+                                        placeholder="Select a Student Class" value="II">II</option>
 
-                                    <option type="radio" id="class" name="student_class" placeholder="Select a Student Class"  value = "VI" >VI</option>
-                                    
-                                    <option type="radio" id="class" name="student_class" placeholder="Select a Student Class"   value = "VII">VII</option>
-                                    
-                                    <option type="radio" id="class" name="student_class" placeholder="Select a Student Class"   value = "VIII">VIII</option>
-                                    
-                                    <option type="radio" id="class" name="student_class" placeholder="Select a Student Class"  value = "IX" >IX</option>
-                                    
-                                    <option type="radio" id="class" name="student_class" placeholder="Select a Student Class"  value = "X" >X</option>
-                                    
+                                    <option type="radio" id="class" name="student_class"
+                                        placeholder="Select a Student Class" value="III">III</option>
+
+                                    <option type="radio" id="class" name="student_class"
+                                        placeholder="Select a Student Class" value="IV">IV</option>
+
+                                    <option type="radio" id="class" name="student_class"
+                                        placeholder="Select a Student Class" value="V">V</option>
+
+                                    <option type="radio" id="class" name="student_class"
+                                        placeholder="Select a Student Class" value="VI">VI</option>
+
+                                    <option type="radio" id="class" name="student_class"
+                                        placeholder="Select a Student Class" value="VII">VII</option>
+
+                                    <option type="radio" id="class" name="student_class"
+                                        placeholder="Select a Student Class" value="VIII">VIII</option>
+
+                                    <option type="radio" id="class" name="student_class"
+                                        placeholder="Select a Student Class" value="IX">IX</option>
+
+                                    <option type="radio" id="class" name="student_class"
+                                        placeholder="Select a Student Class" value="X">X</option>
+
+
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="student_section">Class Section</label>
+                            </td>
+                            <td>
+                                <select name="student_section" id="student_section">
+
+                                    <option type="radio" id="student_section" name="student_section"
+                                        placeholder="Select a Student Section" value="A">A</option>
+
+                                    <option type="radio" id="class" name="student_section"
+                                        placeholder="Select a Student Section" value="B">B</option>
+
+                                    <option type="radio" id="class" name="student_section"
+                                        placeholder="Select a Student Section" value="C">C</option>
+
 
                                 </select>
                             </td>
@@ -124,7 +152,8 @@
                                 <label for="father_name">Father Name</label>
                             </td>
                             <td>
-                                <input type="text" id="father_name" name="father_name" placeholder="Father Name Here" required>
+                                <input type="text" id="father_name" name="father_name" placeholder="Father Name Here"
+                                    required>
                             </td>
                         </tr>
                         <tr>
@@ -132,7 +161,8 @@
                                 <label for="student_mobile">Phone Number</label>
                             </td>
                             <td>
-                                <input type="text" id="student_mobile" name="student_mobile" placeholder="Mobile Number Here" required>
+                                <input type="text" id="student_mobile" name="student_mobile"
+                                    placeholder="Mobile Number Here" required>
                             </td>
                         </tr>
                         <tr>
@@ -140,7 +170,8 @@
                                 <label for="student_email">Email Address</label>
                             </td>
                             <td>
-                                <input type="email" id="student_email" name="student_email" placeholder="Student Email Here" >
+                                <input type="email" id="student_email" name="student_email"
+                                    placeholder="Student Email Here">
                             </td>
                         </tr>
                         <tr>
@@ -148,75 +179,75 @@
                                 <label for=""></label>
                             </td>
                             <td>
-                                <button type="submit"  name="Login">
-                                    Log In
+                                <button type="submit" name="Login">
+                                    Register
                                 </button>
                             </td>
                         </tr>
-                        
+
                     </table>
-                        
-                    </div>
-                  
-                    
-                   
-                </form>
-                
+
             </div>
+
+
+
+            </form>
+
+        </div>
         </div>
     </section>
 
-<section id="footer">
-    <div class="footer">
-        <div class="footerside">
-            <div class="footersidetop">
-                <div class="footersidetopinner">
-                    <div class="footersidetopinnermenu">
-                        <a href="">Home</a>
-                        <a href="">About Us</a>
+    <section id="footer">
+        <div class="footer">
+            <div class="footerside">
+                <div class="footersidetop">
+                    <div class="footersidetopinner">
+                        <div class="footersidetopinnermenu">
+                            <a href="">Home</a>
+                            <a href="">About Us</a>
+                        </div>
+                        <div class="footersidetopinnermenu">
+                            <a href="">News</a>
+                            <a href="">Blog</a>
+                        </div>
+
                     </div>
-                    <div class="footersidetopinnermenu">
-                        <a href="">News</a>
-                        <a href="">Blog</a>
-                    </div>
-                  
+
                 </div>
+                <div class="footersidebottom">
+                    <p>
+                        New M. A. Jinnah Rd, Jamshed Quarters Muslimabad, Karachi, Karachi City, Sindh 74800
+                    </p>
+                    <p>
+                        557-5677-6777
+                    </p>
+                </div>
+            </div>
+            <div class="footermiddle">
+                <img src="./assets/images/logo.png">
+            </div>
+            <div class="footerside">
+                <div class="footersidetop">
+                    <button>
+                        <i class="far fa-user-circle fa-2x"></i>
+                        <p>Portal Login</p>
+                    </button>
+                    <a href="">
+                        Register
+                    </a>
+                </div>
+                <div class="footersidebottom">
+                    <p>
+                        © 2020 Sturdy's Inns, School of Innovation. All Rights Reserved.
+                    </p>
+                    <p>
+                        Sturdy Cyber Software
+                    </p>
+                </div>
+            </div>
 
-            </div>
-            <div class="footersidebottom">
-                <p>
-                    New M. A. Jinnah Rd, Jamshed Quarters Muslimabad, Karachi, Karachi City, Sindh 74800
-                </p>
-                <p>
-                    557-5677-6777
-                </p>
-            </div>
         </div>
-        <div class="footermiddle">
-            <img src="./assets/images/logo.png">
-        </div>
-        <div class="footerside">
-            <div class="footersidetop">
-                <button>
-                    <i class="far fa-user-circle fa-2x"></i>
-                    <p>Portal Login</p>
-                </button>
-                <a href="">
-                    Register
-                </a>
-            </div>
-            <div class="footersidebottom">
-                <p>
-                    © 2020 Sturdy's Inns,  School of Innovation. All Rights Reserved.
-                </p>
-                <p>
-                    Sturdy Cyber Software
-                </p>
-            </div>
-        </div>
-
-    </div>
-</section>
+    </section>
 
 
 
@@ -224,5 +255,5 @@
 
 </html>
 <style>
-   
+
 </style>

@@ -9,12 +9,14 @@ session_start();
        }
        else
        {
-            $query="select * from student_email where student_id='".$_POST['UName']."' and student_password='".$_POST['Password']."'";
+        $username = $_POST['UName'];
+        $password = $_POST['Password'];
+            $query="select * from student_info where student_id='$username' and student_password='$password'";
             $result=mysqli_query($con,$query);
 
             if(mysqli_fetch_assoc($result))
             {
-                $_SESSION['User']=$_POST['UName'];
+                $_SESSION['User']=$username;
                 header("location:wellcome.php");
             }
             else

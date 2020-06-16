@@ -37,9 +37,9 @@ if(isset($_SESSION['User']))
                 <div class="register">
                     <div class="register-inner">
                         <h2>
-                            Admin Portal
+                            Admin Portal(View Lecture Details)
                         </h2>
-                        <form method="post" action="./functions/trafficpolice.php">
+                        <form method="post" action="./choosesubject.php">
                             <table>
 
                                 <tr>
@@ -50,38 +50,40 @@ if(isset($_SESSION['User']))
                                         <select name="admin_author" id="class">
                                             <option type="radio" id="class" name="admin_author"
                                                 placeholder="Select a Student Class" value="I" disabled selected>Select
-                                                A Query </option>
+                                                A Class </option>
 
                                             <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="I">Add A Lecture</option>
+                                                placeholder="Select a Student Class" value="I">I</option>
 
                                             <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="II">Delete A Lecture
+                                                placeholder="Select a Student Class" value="II">II
                                             </option>
 
                                             <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="III">View Student Details
+                                                placeholder="Select a Student Class" value="III">III
                                             </option>
 
                                             <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="IV">Add News</option>
+                                                placeholder="Select a Student Class" value="IV">IV</option>
 
                                             <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="V">Delete News</option>
+                                                placeholder="Select a Student Class" value="V">V</option>
 
                                             <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="VI">Change Announcement
+                                                placeholder="Select a Student Class" value="VI">VI
                                             </option>
                                             <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="VII">Approve Account
+                                                placeholder="Select a Student Class" value="VII">VII
                                             </option>
                                             <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="VIII">Fee Department
+                                                placeholder="Select a Student Class" value="VIII">VIII
                                             </option>
-
-
-
-
+                                            <option type="radio" id="class" name="admin_author"
+                                                placeholder="Select a Student Class" value="IX">IX
+                                            </option>
+                                            <option type="radio" id="class" name="admin_author"
+                                                placeholder="Select a Student Class" value="X">X
+                                            </option>
                                         </select>
                                     </td>
                                 </tr>
@@ -92,7 +94,7 @@ if(isset($_SESSION['User']))
                                     </td>
                                     <td>
                                         <button type="submit" name="Login">
-                                            Log In
+                                            Submit
                                         </button>
                                     </td>
                                 </tr>

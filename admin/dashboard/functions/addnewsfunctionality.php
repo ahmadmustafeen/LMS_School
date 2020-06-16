@@ -1,30 +1,18 @@
 <?php
 
 require_once('../connection.php');
-if($_POST['subject']){
-    $student_class = $_POST['student_class'];
-    $student_subject = $_POST['subject'];
-    $student_chapter = $_POST['chapter'];
-    $student_lecture = $_POST['lecture'];
-
-    $student_subject = strtolower($student_subject);
-    $i = 0;
-$basic = "DELETE FROM $student_subject WHERE student_class = '$student_class' and student_chapter = '$student_chapter' and student_lecture = '$student_lecture' ";
-$check =  mysqli_query($con,"SELECT * FROM $student_subject WHERE student_class = '$student_class'");
-while($row = mysqli_fetch_assoc($check) ){
-    $student_lecture_check = $row['student_lecture'];
-    if ($student_lecture == $student_lecture_check){
-         
-            $i = 1;
-    }
-    
-}
-}
-if($i == 1){
-    $con -> query($basic);
+if(isset($_POST['Login'])){
+    $news = $_POST['news'];
+    date_default_timezone_set("Asia/Karachi");
+    $date =  date("Y-m-d");
+$basic = "INSERT INTO `news` (`news`,`date`) 
+VALUES ('$news','$date')";
+if($con->query($basic)){
+    header("location:../index.php");
 }
 else{
-   ?>
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +45,7 @@ else{
                 <div class="register">
                     <div class="register-inner">
                         <h2>
-                            Error in Deleting.
+                            Error in Adding the news.
                         </h2>
                     </div>
                 </div>
@@ -70,6 +58,9 @@ else{
 
 </html>
 <?php
-
+}
+}
+else{
+    header("location:./index.php");
 }
 ?>

@@ -9,12 +9,13 @@ session_start();
        }
        else
        {
-            $query="select * from admin where admin='".$_POST['UName']."' and pass='".$_POST['Password']."'";
+            $username = $_POST['UName'];
+            $password = $_POST['Password'];
+            $query="select * from admin where admin='$username' and pass='$password'";
             $result=mysqli_query($con,$query);
-
             if(mysqli_fetch_assoc($result))
             {
-                $_SESSION['User']=$_POST['Password'];
+                $_SESSION['User']=$username;
                 header("location:wellcome.php");
             }
             else

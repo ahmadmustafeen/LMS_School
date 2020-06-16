@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,8 +16,8 @@
         <div class="topbar">
             <div class="topbar-inner">
                 <a href="./index.html">News</a>
-                <a href="./index.html">Register A Student</a>
-                <a href="./index.html">Student Portal</a>
+                <a href="./register.php">Register A Student</a>
+                <a href="./login.php">Student Portal</a>
             </div>
         </div>
         <div class="middlebar">
@@ -34,7 +30,7 @@
         </div>
         <div class="menubar">
             <div class="menubar-inner">
-                <a href="">
+                <a href="./index.html">
                     Home
                 </a>
                 <a href="">
@@ -69,7 +65,7 @@
                                 <label for="username">Student ID</label>
                             </td>
                             <td>
-                                <input type="text"  id="username" name="UName" placeholder="Student ID Here" required>
+                                <input type="text" id="username" name="UName" placeholder="Student ID Here" required>
                             </td>
                         </tr>
                         <tr>
@@ -77,7 +73,8 @@
                                 <label for="password">Password</label>
                             </td>
                             <td>
-                                <input type="password" id="password" name="Password" placeholder="Password Here" required>
+                                <input type="password" id="password" name="Password" placeholder="Password Here"
+                                    required>
                             </td>
                         </tr>
                         <tr>
@@ -85,75 +82,75 @@
                                 <label for=""></label>
                             </td>
                             <td>
-                                <button type="submit"  name="Login">
+                                <button type="submit" name="Login">
                                     Log In
                                 </button>
                             </td>
                         </tr>
-                        
+
                     </table>
-                        
-                    </div>
-                  
-                    
-                   
-                </form>
-                
+
             </div>
+
+
+
+            </form>
+
+        </div>
         </div>
     </section>
 
-<section id="footer">
-    <div class="footer">
-        <div class="footerside">
-            <div class="footersidetop">
-                <div class="footersidetopinner">
-                    <div class="footersidetopinnermenu">
-                        <a href="">Home</a>
-                        <a href="">About Us</a>
+    <section id="footer">
+        <div class="footer">
+            <div class="footerside">
+                <div class="footersidetop">
+                    <div class="footersidetopinner">
+                        <div class="footersidetopinnermenu">
+                            <a href="">Home</a>
+                            <a href="">About Us</a>
+                        </div>
+                        <div class="footersidetopinnermenu">
+                            <a href="">News</a>
+                            <a href="">Blog</a>
+                        </div>
+
                     </div>
-                    <div class="footersidetopinnermenu">
-                        <a href="">News</a>
-                        <a href="">Blog</a>
-                    </div>
-                  
+
                 </div>
+                <div class="footersidebottom">
+                    <p>
+                        New M. A. Jinnah Rd, Jamshed Quarters Muslimabad, Karachi, Karachi City, Sindh 74800
+                    </p>
+                    <p>
+                        557-5677-6777
+                    </p>
+                </div>
+            </div>
+            <div class="footermiddle">
+                <img src="./assets/images/logo.png">
+            </div>
+            <div class="footerside">
+                <div class="footersidetop">
+                    <button>
+                        <i class="far fa-user-circle fa-2x"></i>
+                        <p>Portal Login</p>
+                    </button>
+                    <a href="">
+                        Register
+                    </a>
+                </div>
+                <div class="footersidebottom">
+                    <p>
+                        © 2020 Sturdy's Inns, School of Innovation. All Rights Reserved.
+                    </p>
+                    <p>
+                        Sturdy Cyber Software
+                    </p>
+                </div>
+            </div>
 
-            </div>
-            <div class="footersidebottom">
-                <p>
-                    New M. A. Jinnah Rd, Jamshed Quarters Muslimabad, Karachi, Karachi City, Sindh 74800
-                </p>
-                <p>
-                    557-5677-6777
-                </p>
-            </div>
         </div>
-        <div class="footermiddle">
-            <img src="./assets/images/logo.png">
-        </div>
-        <div class="footerside">
-            <div class="footersidetop">
-                <button>
-                    <i class="far fa-user-circle fa-2x"></i>
-                    <p>Portal Login</p>
-                </button>
-                <a href="">
-                    Register
-                </a>
-            </div>
-            <div class="footersidebottom">
-                <p>
-                    © 2020 Sturdy's Inns,  School of Innovation. All Rights Reserved.
-                </p>
-                <p>
-                    Sturdy Cyber Software
-                </p>
-            </div>
-        </div>
-
-    </div>
-</section>
+    </section>
 
 
 
@@ -161,5 +158,5 @@
 
 </html>
 <style>
-   
+
 </style>

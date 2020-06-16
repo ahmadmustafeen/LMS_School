@@ -6,7 +6,7 @@ if(isset($_SESSION['User']))
     $student_id = $_SESSION['User'];
 
 
-    $student_info  = mysqli_query($con,"SELECT `student_name` ,`student_class` FROM `student_email` WHERE student_id = '$student_id'");
+    $student_info  = mysqli_query($con,"SELECT `student_name` ,`student_class` FROM `student_details` WHERE student_id = '$student_id'");
     while($row = mysqli_fetch_assoc($student_info)){
 
         $student_name= $row['student_name'];
@@ -15,7 +15,7 @@ if(isset($_SESSION['User']))
     $subject_name=$_POST['subject'];
     $chapter_name=$_POST['chapter'];
     $subject_name = strtolower($subject_name);
-    $lecture_info  = mysqli_query($con,"SELECT * FROM $subject_name WHERE  student_class= '$student_class' AND student_chapter = '$chapter_name'");
+    $lecture_info  = mysqli_query($con,"SELECT `subject_lecture` FROM `lecture_details` WHERE   student_class= '$student_class' AND class_subject = '$subject_name'AND student_chapter = '$chapter_name'");
     
   
     
@@ -80,7 +80,7 @@ if(isset($_SESSION['User']))
                             <?php
                                 $check = 2; 
                                 while($row = mysqli_fetch_assoc($lecture_info) ){
-                                    $lecture_name = $row['student_lecture'];
+                                    $lecture_name = $row['subject_lecture'];
                                     if($check == 2){
                                         $check = 0;
                                         ?>

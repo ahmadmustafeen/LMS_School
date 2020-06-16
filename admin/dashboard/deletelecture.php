@@ -40,7 +40,7 @@ if(isset($_SESSION['User']))
                             Admin Portal (Delete A Lecture)
                         </h2>
                         
-                        <form method="post" action="deletelecturefunctionality.php">
+                        <form method="post" action="./functions/deletelecturefunctionality.php">
                             <table>
                             <tr>
                             <td>

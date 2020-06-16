@@ -1,9 +1,5 @@
 <?php 
 require_once('connection.php');
-
-
-    if(isset($_POST['Login']))
-    {
         ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -134,11 +130,3 @@ require_once('connection.php');
 
 </html>
 
-
-<?php
-    }
-    else{
-mysqli_close($conn);
-header("location:./login.php");
- }
-?>

@@ -78,6 +78,7 @@ if(isset($_SESSION['User']))
                                 $check = 2; 
                                 while($row = mysqli_fetch_assoc($subject) ){
                                     $chapter_name = $row['student_chapter'];
+                                    $chapter_name = ucwords($chapter_name);
                                     if($check == 2){
                                         $check = 0;
                                         ?>
@@ -121,7 +122,7 @@ if(isset($_SESSION['User']))
                 </form>
                 <div class="announcmentsection">
                     <div class="announcment">
-                        <h2>Announcment</h2>
+                        <h2>Test</h2>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis placeat voluptate
                             asperiores veritatis accusantium reiciendis nihil enim voluptatibus quaerat delectus?

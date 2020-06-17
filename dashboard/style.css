@@ -358,3 +358,78 @@
         color: #FFD200;
         border: 2px solid #FFD200;
     }
+    .test{
+        width: 80%;
+        height: fit-content;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        min-height: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #0664b6b4;
+    }
+    .question{
+        text-align: center;
+        padding-bottom: 20px;
+    }
+    .test form{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        height: fit-content;
+    }
+    .testrow{
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+        width: 30%;
+        height: 50px;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .testcolumn{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .testrow p{
+        font-size: 24px !important;
+        padding: 20px 5px;
+        display: block;
+    }
+    .testrow input ::selection{
+        color: seashell;
+    }
+    .question h3{
+        color: #FFD200;
+        font-weight: 400;
+        font-size: 28px;
+    }
+    .testscreen{
+        height:fit-content;
+        min-height: 70vh;
+    }
+    .padd{
+        padding: 100px;
+    }
+    .questioncheck{
+        padding: 20px 0 ;
+    }
+    .testscreen button {
+        margin: 20px auto;
+        width: 150px;
+        height: 45px;
+        font-size: 18px;
+        background-color: #FFD200;
+        border: 0;
+        color: black;
+    }
+
+    .testscreen button:hover {
+        background-color: #0664b6;
+        color: #FFD200;
+        border: 2px solid #FFD200;
+    }

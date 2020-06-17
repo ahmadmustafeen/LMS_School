@@ -118,7 +118,7 @@ var x = setInterval(function() {
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     //   Display the result in the element with id="demo"
-    document.getElementById("timer").innerHTML = hours + " hours " +
+    document.getElementById("timer").innerHTML = 
         minutes + " mins  " + seconds + " sec minutes left before you can mark attendance";
 
     // If the count down is finished, write some text

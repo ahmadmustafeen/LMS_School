@@ -441,3 +441,20 @@
     .addlecture table{
         height: 90% !important;
     }
+    .test{
+        height: 70% !important;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .test form{
+        margin-top: 30px;
+        margin-left: 60px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 70% !important;
+        width: 80% !important;
+    }

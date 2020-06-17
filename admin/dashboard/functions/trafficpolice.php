@@ -28,6 +28,9 @@ if(isset($_POST['admin_author']))
          case 'IX':
             header('location:../addSubject.php');
          break;
+         case 'X':
+            header('location:../createTestclass.php');
+         break;
      }
 }
 else{

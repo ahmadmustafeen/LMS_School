@@ -80,6 +80,9 @@ if(isset($_SESSION['User']))
                                             <option type="radio" id="class" name="admin_author"
                                                 placeholder="Select a Student Class" value="VIII">Fee Department
                                             </option>
+                                            <option type="radio" id="class" name="admin_author"
+                                                placeholder="Select a Student Class" value="X">Create a Test
+                                            </option>
 
 
 
@@ -94,7 +97,7 @@ if(isset($_SESSION['User']))
                                     </td>
                                     <td>
                                         <button type="submit" name="Login">
-                                            Log In
+                                            Submit
                                         </button>
                                     </td>
                                 </tr>

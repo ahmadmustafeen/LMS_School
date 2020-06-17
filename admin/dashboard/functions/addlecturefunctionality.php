@@ -4,7 +4,8 @@ require_once('../connection.php');
 if($_POST['subject']){
     $student_class = $_POST['student_class'];
     $student_subject = $_POST['subject'];
-$student_chapter = $_POST['chapter'];
+    $student_chapter = $_POST['chapter'];
+    $student_chapter = strtolower($student_chapter);
 $student_lecture = $_POST['lecture'];
 $Must = $_POST['Must'];
 $Must = (int)$Must;

@@ -19,6 +19,9 @@ if(isset($_POST['admin_author']))
          case 'V':
             header('location:../deletenews.php');
          break;
+         case 'VI':
+            header('location:../changeannouncment.php');
+         break;
          case 'VII':
             header('location:../approveaccounts.php');
          break;
@@ -34,6 +37,6 @@ if(isset($_POST['admin_author']))
      }
 }
 else{
-    header('location:./index.php');
+    header('location:../index.php');
 }
 ?>

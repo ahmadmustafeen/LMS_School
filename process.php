@@ -11,7 +11,7 @@ session_start();
        {
         $username = $_POST['UName'];
         $password = $_POST['Password'];
-            $query="select * from student_info where student_id='$username' and student_password='$password'";
+            $query="select * from students_login where student_id='$username' and student_password='$password'";
             $result=mysqli_query($con,$query);
 
             if(mysqli_fetch_assoc($result))

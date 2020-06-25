@@ -41,12 +41,11 @@ body {
     position: absolute;
     display: flex;
     justify-content: center;
-    top: 10px;
+    top: 5px;
 }
-
 .logo img {
-    height: 150px;
-    width: 180px;
+    height: 200px;
+    width: 230px;
 }
 
 .middlebar {
@@ -127,7 +126,6 @@ body {
     background-attachment: fixed;
     background-position: center;
 }
-
 .slider-inner {
     width: 40%;
     height: 80%;
@@ -140,13 +138,11 @@ body {
     border-bottom-width: 10px;
     color: white;
 }
-
 .slider-inner h2 {
     font-weight: 400;
     font-size: 32px;
     margin: 0;
 }
-
 .slider-inner p {
     width: 80%;
     text-align: center;
@@ -264,8 +260,6 @@ background-attachment: fixed;
     display: flex;
     padding: 50px 0;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
     width: 80%;
 }
 .location-inner h2 {
@@ -366,6 +360,10 @@ background-attachment: fixed;
         justify-content: space-around;
         border: 0;
     }
+
+
+
+    /* Login Page */
     .login{
         width: 100%;
         height: 60vh;
@@ -520,7 +518,10 @@ background-attachment: fixed;
     }
        .topbar-inner {
            width: 100%;
-           font-size: 14px;
+           font-size: 12px;
+    }
+    .topbar-inner a{
+        margin:0 10px;
     }
     .logo img {
         display: none;
@@ -558,7 +559,7 @@ background-attachment: fixed;
     }
     .menubar-inner a {
         margin: 0px;
-        font-size: 18px;
+        font-size: 16px;
     }
     
     .menubar-inner a:hover {
@@ -574,7 +575,10 @@ background-attachment: fixed;
 }
 
 .slider-inner h2 {
-    font-size: 22px;
+    font-size: 20px;
+}
+.slider-inner p {
+    font-size: 16px;
 }
 .slider-inner button {
     height: 30px;
@@ -605,16 +609,16 @@ background-attachment: fixed;
     padding: 20px 0;
 }
 .about-inner h2 {
-    font-size: 22px;
+    font-size: 20px;
+    width: 100%;
 }
 .about-inner p {
    font-size: 14px;
-   line-height: 20px;
+   line-height:20px
 }
-
 .location {
     height: fit-content;
-    padding: 20px 0;
+    padding: 0;
 }
 .location-inner {
     width: 90%;
@@ -626,7 +630,6 @@ background-attachment: fixed;
     height: 300px;
     width: 100%;
 }
-
 .footer {
     height: fit-content;
     flex-direction: column;
@@ -647,7 +650,7 @@ background-attachment: fixed;
     min-height: fit-content;
 }
 .footersidetopinner {
-    height: 100%;
+    height: 50px;
     width: 100%;
     justify-content: space-evenly;
     
@@ -661,19 +664,118 @@ background-attachment: fixed;
 .footersidetopinnermenu{
     flex-direction: row;
     height: 100%;
+    margin:0;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
     /* background-color: yellow; */
 }
 
+/* Login Page */
+
+.login{
+    width: 100%;
+    height: fit-content;
+    padding: 20px 0px;
+}
+.login-inner{
+    width: 90%;
+}
+.login-inner h2{
+    font-size: 18px;
+}
+.login-inner form{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height:300px;
+}
+.login-inner table{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.login-inner label{
+    font-size: 18px;
+}
+.login-inner td{
+    margin: 5px;
+}
+.login-inner tr{
+    display:flex;
+    flex-direction: column;
+    margin: 10 0px;
+}
+.login-inner button {
+    height: 30px;
+    width: 100px;
+}
+
+
+
+/* Register Page */
+.register{
+    height: fit-content;
+    padding: 20px 0;
+}
+.register-inner{
+    width: 80%;
+}
+.register-inner h2{
+    font-size: 20px;
+}
+.register-inner label{
+    font-size: 18px;
+}
+.register-inner tr{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.register-inner td{
+    padding: 5px 0;
+}
+/* .register input,.register select{
+    width: 150px;
+    height: 20px;
+} */
+.register-inner button {
+    margin: 20px 0;
+    height: 30px;
+    width: 100px;
+}
+
+
+
    }
    
 
      /* mobile based on g4 s5  */
      @media all and (min-width: 1024px) and (max-width: 1280px) { 
-
-
+        .topbar-inner {
+            font-size: 16px;
+        }
+        
+    .middlebar-inner h1 {
+        font-size: 36px;
+    }
+    .middlebar-inner h3 {
+        font-size: 22px;
+    }
+    .menubar-inner a {
+        font-size: 22px;
+    }
+    .menubar {
+        height: 50px;
+    }
+    .slider-inner {
+        width: 60%;
+    }  
+    .footersidetopinner {
+        width: 70%;
+    }
 
 
 
@@ -682,15 +784,303 @@ background-attachment: fixed;
   
     @media all and (min-width: 768px) and (max-width: 1024px) { 
  
+        .topbar-inner {
+            font-size: 14px;
+        }
+        .topbar-inner a{
+            margin: 0 10px;
+        }
+        
+    .middlebar-inner h1 {
+        font-size: 32px;
+    }
+    .middlebar-inner h3 {
+        font-size: 20px;
+    }
+    .menubar-inner a {
+        font-size: 20px;
+    }
+    .menubar {
+        height: 40px;
+    }
+    .slider-inner {
+        width: 75%;
+    }  
+    .footersidetopinner {
+        width: 90%;
+    }
+    .howtoleft h2,.howtoright h2{
+        width: 80%;
+    }
+    .about-inner h2 {
+        font-size: 28px;
+    } 
+    .footersidetopinnermenu{
+        margin: 0 10px;
+    }
+    .footersidetop a{
+        font-size: 14px;
+    }
+    .footersidebottom p{
+    font-size: 14px;
+    font-weight: 400;
+    }
+    .footerside {
+        width: 36.3333%;
+    }
+  
+    .footermiddle {
+        width: 28.3333%;
+        height: 100%;
+        background-color: rgb(1, 56, 107);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
  
- 
- 
+.footermiddle img {
+    height: 160px;
+    width: 180px;
+}
+
+    /* Login */
+    .login{
+        width: 100%;
+        height: fit-content;
+        padding: 20px 0px;
+    }
+    .login-inner{
+        width: 70%;
+    }
+    .login-inner h2{
+        font-size: 24px;
+    }
+    .login-inner form{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        height:300px;
+    }
+    .login-inner table{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .login-inner label{
+        font-size: 20px;
+    }
+    .login-inner td{
+        margin: 5px;
+    }
+    .login-inner tr{
+        display:flex;
+        flex-direction: column;
+        margin: 10 0px;
+    }
+    .login-inner button {
+        height: 30px;
+        width: 100px;
+    }
  
     }
      
     @media all and (min-width: 480px) and (max-width: 768px) { 
  
- 
- 
+        .topbar {
+            width: 100%;
+        }
+           .topbar-inner {
+               width: 100%;
+               font-size: 14px;
+        }
+        .logo img {
+            display: none;
+        } 
+        .middlebar-inner {
+            width: 100%;
+        }
+        
+        .middlebar-inner h1 {
+            margin: 0px;
+            font-weight: 500;
+            font-size: 22px;
+        }
+        
+        .middlebar-inner hr {
+            width: 100px;
+        }
+        .middlebar-inner h3 {
+            font-weight: 500;
+            font-size: 18px;
+        }
+        .menubar {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+        }
+        .menubar-inner{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .menubar-inner a {
+            margin: 0px;
+            font-size: 18px;
+        }
+        
+        .menubar-inner a:hover {
+            color: rgb(206, 11, 11);
+        }
+        
+    .slider {
+        height: 65vh;
+    }
+    
+    .slider-inner {
+        width: 90%;
+    }
+    
+    .slider-inner h2 {
+        font-size: 22px;
+    }
+    .slider-inner button {
+        height: 30px;
+        width: 100px;
+        font-size: 14px;
+    }
+    .howto{
+        flex-direction: column;
+    }
+    .howtoleft{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .howtoleft h2,.howtoright h2{
+        width: 80%;
+    }
+    .howtoright{
+        width: 100%;
+    }
+    .howto button {
+        height: 30px;
+        width: 100px;
+        font-size: 14px;
+    }
+    .about {
+        height: fit-content;
+        padding: 20px 0;
+    }
+    .about-inner h2 {
+        font-size: 22px;
+    }
+    .about-inner p {
+       font-size: 14px;
+       line-height: 20px;
+    }
+    
+    .location {
+        height: fit-content;
+        padding: 20px 0;
+    }
+    .location-inner {
+        width: 90%;
+    }
+    .location-inner h2 {
+        font-size: 22px;
+    }
+    .location-inner iframe{
+        height: 300px;
+        width: 100%;
+    }
+    
+    .footer {
+        height: fit-content;
+        flex-direction: column;
+    }
+    .footerside {
+        width: 100%;
+        max-height: 150px;
+        min-height: fit-content;
+    }
+    .footermiddle {
+        padding: 10px 0;
+        width: 100%;
+        max-height: 150px;
+        min-height: fit-content;
+    }
+    .footersidetop {
+        max-height: 120px;
+        min-height: fit-content;
+    }
+    .footersidetopinner {
+        height: 50px;
+        width: 100%;
+        justify-content: space-evenly;
+        
+    }
+    .footersidetop a{
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 14px;
+        color: white;
+    }
+    .footersidetopinnermenu{
+        flex-direction: row;
+        height: 100%;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        /* background-color: yellow; */
+    }
+
+
+
+    /* Login */
+    .login{
+        width: 100%;
+        height: fit-content;
+        padding: 20px 0px;
+    }
+    .login-inner{
+        width: 80%;
+    }
+    .login-inner h2{
+        font-size: 18px;
+    }
+    .login-inner form{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        height:300px;
+    }
+    .login-inner table{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .login-inner label{
+        font-size: 18px;
+    }
+    .login-inner td{
+        margin: 5px;
+    }
+    .login-inner tr{
+        display:flex;
+        flex-direction: column;
+        margin: 10 0px;
+    }
+    .login-inner button {
+        height: 30px;
+        width: 100px;
+    }
+    
+    
  
     }

@@ -5,7 +5,7 @@ if(isset($_SESSION['User']))
 {
     if(isset($_POST['submit'])){
         $student_id = $_POST['subject'];
-        $aa = "UPDATE `student_account` SET`student_status`='paid' WHERE  student_id = '$student_id'";
+        $aa = "UPDATE `student_account` SET `student_status`='paid' WHERE  student_id = '$student_id'";
         if($con -> query($aa)){
            header('location:./index.php');
         }

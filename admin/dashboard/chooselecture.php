@@ -8,6 +8,7 @@ if(isset($_SESSION['User']))
     if($_POST['chapter']){
        $class =  $_POST['class'];
        $subject=$_POST['subject'];
+       $section=$_POST['section'];
        $chapter=$_POST['chapter'];
        $subject = strtolower($subject);
        $lecture_info  = mysqli_query($con,"SELECT  `subject_lecture` FROM `lecture_details` WHERE student_class = '$class' and class_subject = '$subject'and student_chapter = '$chapter'");
@@ -31,14 +32,15 @@ if(isset($_SESSION['User']))
     <div class="main">
         <div class="videobar">
             <div class="topbar">
-
-                <marquee behavior="" direction="" style="width: 60%;">
+                <a href="./index.php">
+                    <button type="submit">Back to Dashboard</button>
+                </a>
+                <marquee behavior="" direction="" style="width: 80%;">
                     <h2 style="color: white;">
                         Welcome to LMS of Sturdy's Inn
                     </h2>
                 </marquee>
 
-                <button type="submit">Edit Profile</button>
                 <a href="../logout.php">
                     <button type="submit">Logout</button>
                 </a>
@@ -48,11 +50,13 @@ if(isset($_SESSION['User']))
                 <div class="register">
                     <div class="register-inner">
                         <h2>
-                            Admin Portal(View Lecture Details)
+                            Select a lecture (Show Attendance)
                         </h2>
-                        <form action="showattendance.php" method="POST" style="overflow-y:scroll;overflow-x:hidden;width:90%">
-                        <input type="text" name="subject" style="display:none" value="<?php echo $subject ?>">
-                        <input type="text" name="class" style="display:none" value="<?php echo $class ?>">
+                        <form action="showattendance.php" method="POST"
+                            style="overflow-y:scroll;overflow-x:hidden;width:90%">
+                            <input type="text" name="subject" style="display:none" value="<?php echo $subject ?>">
+                            <input type="text" name="section" style="display:none" value="<?php echo $section ?>">
+                            <input type="text" name="class" style="display:none" value="<?php echo $class ?>">
                             <?php
                                 $check = 2; 
                                 while($row = mysqli_fetch_assoc($lecture_info) ){
@@ -73,11 +77,11 @@ if(isset($_SESSION['User']))
                                         <span class="checkmark"></span>
                                     </label>
 
-                                  
+
                                     <?php 
                                     $check = $check +1;
                                     ?>
-                                
+
                                 </div>
                                 <?php
                                     if($check == 2){
@@ -99,16 +103,16 @@ if(isset($_SESSION['User']))
                 </div>
                 <button type="submit" class="submit">submit</button>
                 </form>
-                   </div>
-
-
-
-                    </form>
-
-                </div>
             </div>
 
+
+
+            </form>
+
         </div>
+    </div>
+
+    </div>
 
 
     </div>

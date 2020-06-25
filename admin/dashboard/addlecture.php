@@ -20,14 +20,15 @@ if(isset($_SESSION['User']))
     <div class="main">
         <div class="videobar">
             <div class="topbar">
-
-                <marquee behavior="" direction="" style="width: 60%;">
+                <a href="./index.php">
+                    <button type="submit">Back to Dashboard</button>
+                </a>
+                <marquee behavior="" direction="" style="width: 80%;">
                     <h2 style="color: white;">
                         Welcome to LMS of Sturdy's Inn
                     </h2>
                 </marquee>
 
-                <button type="submit">Edit Profile</button>
                 <a href="../logout.php">
                     <button type="submit">Logout</button>
                 </a>
@@ -41,16 +42,13 @@ if(isset($_SESSION['User']))
                         </h2>
 
                         <form method="post" action="./functions/addlecturefunctionality.php" style="width:70%">
-                            <table >
+                            <table>
                                 <tr>
                                     <td>
                                         <label for="class">Class</label>
                                     </td>
                                     <td>
                                         <select name="student_class" id="class">
-
-                                            <option type="radio" id="class" name="student_class"
-                                                placeholder="Select a Student Class" value="I">I</option>
 
                                             <option type="radio" id="class" name="student_class"
                                                 placeholder="Select a Student Class" value="II">II</option>
@@ -116,8 +114,8 @@ if(isset($_SESSION['User']))
                                         <label for="Must">Must View Time </label>
                                     </td>
                                     <td>
-                                        <input type="number" id="Must" name="Must"
-                                            placeholder="Give time in minutes" required>
+                                        <input type="number" id="Must" name="Must" placeholder="Give time in minutes"
+                                            required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -129,7 +127,7 @@ if(isset($_SESSION['User']))
                                             placeholder="Lecture Video Link Here" required>
                                     </td>
                                 </tr>
-                               
+
 
                                 <tr>
                                     <td>
@@ -137,7 +135,7 @@ if(isset($_SESSION['User']))
                                     </td>
                                     <td>
                                         <button type="submit" name="Login">
-                                            Log In
+                                            Submit
                                         </button>
                                     </td>
                                 </tr>

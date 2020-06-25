@@ -20,14 +20,15 @@ if(isset($_SESSION['User']))
     <div class="main">
         <div class="videobar">
             <div class="topbar">
-
-                <marquee behavior="" direction="" style="width: 60%;">
+                <a href="./index.php">
+                    <button type="submit">Back to Dashboard</button>
+                </a>
+                <marquee behavior="" direction="" style="width: 80%;">
                     <h2 style="color: white;">
                         Welcome to LMS of Sturdy's Inn
                     </h2>
                 </marquee>
 
-                <button type="submit">Edit Profile</button>
                 <a href="../logout.php">
                     <button type="submit">Logout</button>
                 </a>
@@ -49,11 +50,8 @@ if(isset($_SESSION['User']))
                                     <td>
                                         <select name="admin_author" id="class">
                                             <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="I" disabled selected>Select
+                                                placeholder="Select a Student Class" disabled selected>Select
                                                 A Class </option>
-
-                                            <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="I">I</option>
 
                                             <option type="radio" id="class" name="admin_author"
                                                 placeholder="Select a Student Class" value="II">II
@@ -79,10 +77,16 @@ if(isset($_SESSION['User']))
                                                 placeholder="Select a Student Class" value="VIII">VIII
                                             </option>
                                             <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="IX">IX
+                                                placeholder="Select a Student Class" value="IXC">IX Computer
                                             </option>
                                             <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="X">X
+                                                placeholder="Select a Student Class" value="IXB">IX Biology
+                                            </option>
+                                            <option type="radio" id="class" name="admin_author"
+                                                placeholder="Select a Student Class" value="XC">X Computer
+                                            </option>
+                                            <option type="radio" id="class" name="admin_author"
+                                                placeholder="Select a Student Class" value="XB">X Biology
                                             </option>
                                         </select>
                                     </td>

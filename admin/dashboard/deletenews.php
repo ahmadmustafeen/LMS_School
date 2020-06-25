@@ -22,14 +22,15 @@ if(isset($_SESSION['User']))
     <div class="main">
         <div class="videobar">
             <div class="topbar">
-
-                <marquee behavior="" direction="" style="width: 60%;">
+                <a href="./index.php">
+                    <button type="submit">Back to Dashboard</button>
+                </a>
+                <marquee behavior="" direction="" style="width: 80%;">
                     <h2 style="color: white;">
                         Welcome to LMS of Sturdy's Inn
                     </h2>
                 </marquee>
 
-                <button type="submit">Edit Profile</button>
                 <a href="../logout.php">
                     <button type="submit">Logout</button>
                 </a>
@@ -41,7 +42,8 @@ if(isset($_SESSION['User']))
                         <div class="news">
 
                             <div class="newsfeed">
-                                <form action="./functions/deletenewsfunctionality.php" method="POST" style="width:100% !important">
+                                <form action="./functions/deletenewsfunctionality.php" method="POST"
+                                    style="width:100% !important">
                                     <table style="width:100% !important">
                                         <?php
                     while($row = mysqli_fetch_assoc($newsWeb) ){

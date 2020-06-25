@@ -5,7 +5,7 @@ if(isset($_SESSION['User']))
 {
     
     
-    $student_names  = mysqli_query($con,"SELECT `student_id` FROM `student_account` WHERE   student_account_status = 'pending' ");
+    $student_names  = mysqli_query($con,"SELECT * FROM `waitlist` WHERE   student_account_status = 'pending' ");
     
 ?>
 
@@ -25,16 +25,15 @@ if(isset($_SESSION['User']))
     <div class="main">
         <div class="videobar">
             <div class="topbar">
-                <a href="../logout.php">
-                        <button type="./index.php">Dashboard</button>
+                <a href="./index.php">
+                    <button type="submit">Back to Dashboard</button>
                 </a>
-                <marquee behavior="" direction="" style="width: 60%;">
+                <marquee behavior="" direction="" style="width: 80%;">
                     <h2 style="color: white;">
                         Welcome to LMS of Sturdy's Inn
                     </h2>
                 </marquee>
 
-                <button type="submit">Edit Profile</button>
                 <a href="../logout.php">
                     <button type="submit">Logout</button>
                 </a>
@@ -43,45 +42,51 @@ if(isset($_SESSION['User']))
             <div class="bar">
                 <div class="register">
                     <div class="register-inner">
-                        <h2>List Of Unpaid Students</h2>
+                        <h2>List Of Pending Approvals</h2>
                         <div class="newsfeed">
-                        <form action="./functions/aprroveaccountfunctionality.php" method="POST" style="width:100% !important">
-                                    <table style="width:70% !important">
-                                        <?php
+                            <form action="./functions/aprroveaccountfunctionality.php" method="POST"
+                                style="width:100% !important">
+                                <table style="width:70% !important">
+                                    <?php
                     while($row = mysqli_fetch_assoc($student_names) ){
                         $student_id = $row['student_id'];
-                        $get_name = mysqli_query($con,"SELECT `student_name`, `student_class` FROM `student_details` WHERE student_id = '$student_id'");
-                        while($row = mysqli_fetch_assoc($get_name) ){
-                            $student_name = $row['student_name'];
-                            $student_class = $row['student_class'];
+                        $student_name = $row['student_name'];
+                        $student_class = $row['student_class'];
+                        $student_section = $row['student_section'];
+                        if($student_class != "IX" && $student_class != "X"){
+                            $student_section = "";
+                        }
+                       
                         ?> <tr style="width:50% !important;">
-                                            <td> <label class="container">
-                                                   <p> <?php echo "$student_id &nbsp $student_name &nbsp $student_class" ?></p></p>
-                                                    <input type="radio" name="subject" value="<?php echo $student_id ?>">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                          
-                                                <hr style="width:100%">
-                                            </td>
-                                        </tr>
+                                        <td> <label class="container">
+                                                <p> <?php echo "$student_id &nbsp $student_name &nbsp $student_class &nbsp $student_section" ?>
+                                                </p>
+                                                </p>
+                                                <input type="radio" name="subject" value="<?php echo $student_id ?>">
+                                                <span class="checkmark"></span>
+                                            </label>
 
-                                        <?php }
+                                            <hr style="width:100%">
+                                        </td>
+                                    </tr>
+
+                                    <?php 
                                         }  ?>
-                                        <tr style="width:50%;margin 0 auto;">
+                                    <tr style="width:50%;margin 0 auto;">
 
                                         <td style="display:flex;justify-content:space-evenly">
-                                                <button type="submit" name="submit">
-                                                    Approve
-                                                </button>
-                                                <button type="submit" name="delete">
+                                            <button type="submit" name="submit">
+                                                Approve
+                                            </button>
+                                            <button type="submit" name="delete">
                                                 Reject
-                                                </button>
-                                            </td>
-                                        
-                                        </tr>
+                                            </button>
+                                        </td>
 
-                                    </table>
-                                </form>
+                                    </tr>
+
+                                </table>
+                            </form>
                         </div>
                     </div>
 
@@ -103,6 +108,7 @@ if(isset($_SESSION['User']))
 .newsfeed {
     overflow-x: hidden;
 }
+
 .newsfeed p {
     font-size: 24px;
     text-align: center;

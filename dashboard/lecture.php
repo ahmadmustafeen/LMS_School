@@ -3,32 +3,51 @@ require_once("../connection.php");
 session_start();
 if(isset($_SESSION['User']))
 {
-    $student_id = $_SESSION['User'];
-
-
-    $student_info  = mysqli_query($con,"SELECT `student_name` ,`student_class`,`student_roll_number` FROM `student_details` WHERE student_id = '$student_id'");
-    while($row = mysqli_fetch_assoc($student_info)){
-        $student_name= $row['student_name'];
-        $student_class = $row['student_class'];
-        $student_roll_number = $row['student_roll_number'];
-    }
-    $subject_name=$_POST['subject'];
-    $chapter_name=$_POST['chapter'];
-    $chapter_name = strtolower($chapter_name);
+    $student_id = $_SESSION['User']; 
+    $subject_name = $_POST['subject'];
+    $chapter_name = $_POST['chapter'];
     $subject_name = strtolower($subject_name);
-    $lecture_info  = mysqli_query($con,"SELECT `subject_lecture` FROM `lecture_details` WHERE student_class= '$student_class' AND class_subject = '$subject_name'AND student_chapter = '$chapter_name'");
-    
-    $checkexistence = mysqli_query($con,"SELECT * FROM `test_marks` WHERE
-     student_class = '$student_class' and class_subject = '$subject_name' and subject_chapter = '$chapter_name'");
-    $student_roll_number = "mark".$student_roll_number;
-    // echo $student_roll_number,$subject_name,$student_class,$chapter_name;
-    $roll_number_marks_query = mysqli_query($con,"SELECT `$student_roll_number` FROM `test_marks` WHERE student_class = '$student_class' and class_subject = '$subject_name' and subject_chapter = '$chapter_name'");
-    $student_roll_number_marks1 = null;
-    while($row = mysqli_fetch_assoc($roll_number_marks_query) ){  
-        $student_roll_number_marks1 = $row["$student_roll_number"];
+    $chapter_name = strtolower($chapter_name);
+    if(!$chapter_name){
+        header("location:./index.php");
     }
+
+
+
+
+    $waitlistcheck  = mysqli_query($con,"SELECT `student_account_status`,`student_class`,`student_name`,`student_section` FROM `waitlist` WHERE student_id = '$student_id'");
+    while($row = mysqli_fetch_assoc($waitlistcheck)){
+        $student_account_status= $row['student_account_status'];
+        $student_class= $row['student_class'];
+        $student_section= $row['student_section'];
+         $student_name = $row['student_name'];
+    }
+
+    $student_class = strtolower($student_class);
+
+    $newsWeb  = mysqli_query($con,"SELECT * FROM `news` ORDER BY date DESC");
+
+
+    $announcement_query  = mysqli_query($con,"SELECT  `announcement`, `date` FROM `announcement` WHERE  class = '$student_class'");
+    while($row = mysqli_fetch_assoc($announcement_query)){
+        $announcement = $row['announcement'];
+        $date = $row['date'];
+        $year = explode("-",$date);
+    }
+
+
+    $account_status  = mysqli_query($con,"SELECT  `student_status` FROM `student_account` WHERE student_id = '$student_id'");
+    while($row = mysqli_fetch_assoc($account_status)){
+        $student_status = $row['student_status'];
+    }
+    $lecture_info  = mysqli_query($con,"SELECT distinct `subject_lecture` FROM `lecture_details` WHERE student_class= '$student_class' and class_subject = '$subject_name' and student_chapter = '$chapter_name'");
     
-    
+
+
+
+
+    if($student_account_status == "approved"){
+        if($student_status=="paid"){
 
 ?>
 <!DOCTYPE html>
@@ -60,22 +79,25 @@ if(isset($_SESSION['User']))
                 </h2>
 
                 <h2>
-                    <?php echo $student_class ?>
+                    <?php echo strtoupper($student_class) ?>
                 </h2>
 
             </div>
         </div>
         <div class="mainbar">
             <div class="topbar">
-
-                <marquee behavior="" direction="" style="width: 60%;">
+                <a href="./index.php" id="hide"><button> Back to Dashboard</button></a>
+                <marquee behavior="">
                     <h2 style="color: white;">
                         Welcome to LMS of Sturdy's Inn
                     </h2>
                 </marquee>
+                <div class="button">
+                    <a href="./index.php" id="show"><button> Back to Dashboard</button></a>
+                    <a href="#"><button> Edit Profile</button></a>
+                    <a href="../logout.php"><button> Logout</button></a>
+                </div>
 
-                <button type="submit">Edit Profile</button>
-                <a href="../logout.php"><button> Logout</button></a>
             </div>
             <div class="bar">
                 <div class="mainbarleft">
@@ -133,50 +155,12 @@ if(isset($_SESSION['User']))
                 <button type="submit" class="submit">submit</button>
                 </form>
                 <div class="announcmentsection">
-                    <div class="announcment"
-                        style="display:flex;flex-direction:column; width:100%; align-items:center;">
-                        <h2 style="padding-bottom:20px">Attempt Test (One try)</h2>
-                        <?php 
-                         if(mysqli_fetch_assoc($checkexistence) && is_null($student_roll_number_marks1)){
-                          ?>
-                          <form action="test.php" method="POST">
-                              <input type="text" name="class" style="display:none" value = "<?php echo $student_class ?>">
-                              
-                              <input type="text" name="subject" style="display:none" value = "<?php echo $subject_name ?>">
-                              
-                              <input type="text" name="chapter" style="display:none" value = "<?php echo $chapter_name ?>">
-                              
-                              <input type="text" name="rollNumber" style="display:none" value = "<?php echo $student_roll_number_marks1 ?>">
-
-                          <button type="submit" class="submit">Attempt</button>
-                          </form>
-                        <?php
-                        }
-                        else if(!is_null($student_roll_number_marks1)){
-                            ?>
-                         
-                         <form action="testmarks.php" method="POST">
-                              <input type="text" name="class" style="display:none" value = "<?php echo $student_class ?>">
-                              
-                              <input type="text" name="subject" style="display:none" value = "<?php echo $subject_name ?>">
-                              
-                              <input type="text" name="chapter" style="display:none" value = "<?php echo $chapter_name ?>">
-                              
-                           
-
-                          <button type="submit" class="submit">Already Taken</button>
-                          </form>
-                        <?php
-                        }
-                        else if(!mysqli_fetch_assoc($checkexistence) && is_null($student_roll_number_marks1)){   ?>
-                            <a href="#">
-                           <button type="submit" class="submit">Kindly Wait </button>
-                           </a>
-                           <?php
-                            
-                        }
-                        ?>
-
+                    <div class="announcment">
+                        <h2>Announcment</h2>
+                        <p style="text-align:center">
+                            <?php echo $announcement ?>
+                        </p>
+                        <h3 style="text-align:center;"><?php echo ($year[2]."-".$year[1]."-".$year[0]) ?></h3>
                     </div>
                 </div>
             </div>
@@ -184,18 +168,19 @@ if(isset($_SESSION['User']))
                 <div class="news">
                     <h2>Latest News</h2>
                     <div class="newsfeed">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis placeat voluptate
-                            asperiores veritatis accusantium reiciendis nihil enim voluptatibus quaerat delectus?
+                        <?php
+                    while($row = mysqli_fetch_assoc($newsWeb) ){
+                        $news = $row['news'];
+                        $date = $row['date'];
+                        ?>
+                        <p style="width:90%">
+                            <?php echo $news ?>
                         </p>
-                        <h4>02-April-2020</h4>
+                        <h4>
+                            <?php echo $date ?></h4>
                         <hr>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis placeat voluptate
-                            asperiores veritatis accusantium reiciendis nihil enim voluptatibus quaerat delectus?
-                        </p>
-                        <h4>02-April-2020</h4>
-                        <hr>
+                        <?php }  ?>
+
                     </div>
 
                 </div>
@@ -209,13 +194,18 @@ if(isset($_SESSION['User']))
 </body>
 
 </html>
-<style>
-
-</style>
 <?php
 
 }
 else{
-header("location:./index.php");
+    header("location:./index.php");
 }
+    }
+else{
+    header("location:./index.php");
+}
+    }
+    else{
+        header("location:../login.php");
+    }
 ?>

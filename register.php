@@ -93,8 +93,6 @@
                             <td>
                                 <select name="student_class" id="class">
 
-                                    <option type="radio" id="class" name="student_class"
-                                        placeholder="Select a Student Class" value="I">I</option>
 
                                     <option type="radio" id="class" name="student_class"
                                         placeholder="Select a Student Class" value="II">II</option>
@@ -138,10 +136,10 @@
                                         placeholder="Select a Student Section" value="A">A</option>
 
                                     <option type="radio" id="class" name="student_section"
-                                        placeholder="Select a Student Section" value="B">B</option>
+                                        placeholder="Select a Student Section" value="Biology">Biology</option>
 
                                     <option type="radio" id="class" name="student_section"
-                                        placeholder="Select a Student Section" value="C">C</option>
+                                        placeholder="Select a Student Section" value="Computer">Computer</option>
 
 
                                 </select>

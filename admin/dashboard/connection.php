@@ -1,6 +1,6 @@
 <?php
 
-    $con=mysqli_connect('localhost','root','','school_lms');
+    $con=mysqli_connect('localhost','root','','modern_school');
 
     if(!$con)
     {

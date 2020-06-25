@@ -3,26 +3,73 @@ require_once("../connection.php");
 session_start();
 if(isset($_SESSION['User']))
 {
+
+
     $student_id = $_SESSION['User'];
-
-
-    $student_info  = mysqli_query($con,"SELECT `student_name`, `student_class` FROM `student_details` WHERE student_id = '$student_id'");
-    while($row = mysqli_fetch_assoc($student_info)){
-        $student_name= $row['student_name'];
-        $student_class = $row['student_class'];
-    }
-    $subject_info  = mysqli_query($con,"SELECT `class_subject` FROM `class_details`  WHERE student_class = '$student_class' "); 
-
-    $student_acct_info  = mysqli_query($con,"SELECT`student_account_status`, `student_status` FROM `student_account` WHERE student_id = '$student_id'");
-    while($row = mysqli_fetch_assoc($student_acct_info)){
+    
+    
+    
+    
+    //getting details of the account to continue...
+    $waitlistcheck  = mysqli_query($con,"SELECT `student_account_status`,`student_class`,`student_section` FROM `waitlist` WHERE student_id = '$student_id'");
+    while($row = mysqli_fetch_assoc($waitlistcheck)){
         $student_account_status= $row['student_account_status'];
-        $student_status = $row['student_status'];
+        $student_class= $row['student_class'];
+        $student_section= $row['student_section'];
     }
-    
-    
-    $newsWeb  = mysqli_query($con,"SELECT * FROM `news` ORDER BY date DESC");
-if($student_account_status != 'pending' && $student_status != 'unpaid' && $student_account_status != 'reject'  ){
-?>
+
+    //creating a student class
+    $student_class = strtolower($student_class);
+    if($student_class != "ix" && $student_class != "x"){
+        $student_section = "";
+        $student_class = "class_".$student_class."_students".$student_section;
+    }
+    else{
+        $student_class = "class_".$student_class."_students".$student_section;
+        
+        $class_subjects  = mysqli_query($con,"SELECT distinct `subjects` FROM `class_details` WHERE class = '$student_class'");
+        // echo"$student_class";
+    }
+
+    //checking if the account is approved or not...
+    if($student_account_status == "approved"){
+        
+        //getting the info of students
+        $student_info  = mysqli_query($con,"SELECT `student_name` FROM `$student_class` WHERE student_id = '$student_id'");
+        while($row = mysqli_fetch_assoc($student_info)){
+            $student_name = $row['student_name'];
+        }
+        $account_status  = mysqli_query($con,"SELECT  `student_status` FROM `student_account` WHERE student_id = '$student_id'");
+        while($row = mysqli_fetch_assoc($account_status)){
+            $student_status = $row['student_status'];
+        }
+
+        //students class development
+        
+        
+        $class = explode("_",$student_class);
+        // $student_class = strtoupper($class[1]);
+        if($student_class != 'IX' && $student_class != 'X'){
+            $class_subjects  = mysqli_query($con,"SELECT distinct `subjects` FROM `class_details` WHERE class = '$student_class'");
+        }
+        $student_class = strtoupper($class[1]);
+        //getting subject for class
+        // $class_subjects  = mysqli_query($con,"SELECT distinct `subjects` FROM `class_details` WHERE class = '$student_class'");
+        // while($row = mysqli_fetch_assoc($class_subjects)){
+        //     $student_subjects = $row['subjects'];
+        // }
+        $newsWeb  = mysqli_query($con,"SELECT `news`,`date` FROM `news` where 1 ORDER BY date desc");
+        $announcement_query  = mysqli_query($con,"SELECT  `announcement`, `date` FROM `announcement` WHERE  class = '$student_class'");
+        while($row = mysqli_fetch_assoc($announcement_query)){
+            $announcement = $row['announcement'];
+            $date = $row['date'];
+            $year = explode("-",$date);
+        }
+
+        if($student_status=="paid"){
+
+        
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,15 +106,18 @@ if($student_account_status != 'pending' && $student_status != 'unpaid' && $stude
         </div>
         <div class="mainbar">
             <div class="topbar">
-
-                <marquee behavior="" direction="" style="width: 60%;">
+                <a href="./index.php" id="hide"><button> Back to Dashboard</button></a>
+                <marquee behavior="">
                     <h2 style="color: white;">
                         Welcome to LMS of Sturdy's Inn
                     </h2>
                 </marquee>
+                <div class="button">
+                    <a href="./index.php" id="show"><button> Back to Dashboard</button></a>
+                    <a href="#"><button> Edit Profile</button></a>
+                    <a href="../logout.php"><button> Logout</button></a>
+                </div>
 
-                <button type="submit">Edit Profile</button>
-                <a href="../logout.php"><button> Logout</button></a>
             </div>
             <div class="bar">
                 <div class="mainbarleft">
@@ -78,18 +128,18 @@ if($student_account_status != 'pending' && $student_status != 'unpaid' && $stude
                         <form action="chapter.php" method="POST">
 
                             <?php
-                                $check = 2; 
-                                while($row = mysqli_fetch_assoc($subject_info) ){
-                                    $subject_name = $row['class_subject'];
-                                    $subject_name = ucwords($subject_name); 
-                                    if($check == 2){
-                                        $check = 0;
-                                        ?>
+                                        $check = 2; 
+                                        while($row = mysqli_fetch_assoc($class_subjects) ){
+                                            $subject_name = $row['subjects'];
+                                            $subject_name = ucwords($subject_name); 
+                                            if($check == 2){
+                                                $check = 0;
+                                                ?>
                             <div class="row">
                                 <?php
-                                    }
-                                    
-                                        ?>
+                                            }
+                                            
+                                                ?>
                                 <div class="column">
 
                                     <label class="container"><?php echo $subject_name ?>
@@ -99,24 +149,24 @@ if($student_account_status != 'pending' && $student_status != 'unpaid' && $stude
 
 
                                     <?php 
-                                    $check = $check +1;
-                                    ?>
+                                            $check = $check +1;
+                                            ?>
 
                                 </div>
                                 <?php
-                                    if($check == 2){
-                                        ?>
+                                            if($check == 2){
+                                                ?>
                             </div>
                             <?php
-                                    }
-                                }
-                                if($check < 2){
-                                    ?>
+                                            }
+                                        }
+                                        if($check < 2){
+                                            ?>
                     </div>
 
                     <?php 
-                            }
-                             ?>
+                                    }
+                                     ?>
 
 
 
@@ -126,10 +176,10 @@ if($student_account_status != 'pending' && $student_status != 'unpaid' && $stude
                 <div class="announcmentsection">
                     <div class="announcment">
                         <h2>Announcment</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis placeat voluptate
-                            asperiores veritatis accusantium reiciendis nihil enim voluptatibus quaerat delectus?
+                        <p style="text-align:center">
+                            <?php echo $announcement ?>
                         </p>
+                        <h3 style="text-align:center;"><?php echo ($year[2]."-".$year[1]."-".$year[0]) ?></h3>
                     </div>
                 </div>
             </div>
@@ -138,10 +188,10 @@ if($student_account_status != 'pending' && $student_status != 'unpaid' && $stude
                     <h2>Latest News</h2>
                     <div class="newsfeed">
                         <?php
-                    while($row = mysqli_fetch_assoc($newsWeb) ){
-                        $news = $row['news'];
-                        $date = $row['date'];
-                        ?>
+                            while($row = mysqli_fetch_assoc($newsWeb) ){
+                                $news = $row['news'];
+                                $date = $row['date'];
+                                ?>
                         <p style="width:90%">
                             <?php echo $news ?>
                         </p>
@@ -164,10 +214,11 @@ if($student_account_status != 'pending' && $student_status != 'unpaid' && $stude
 
 </html>
 <?php
-}
-else{
-    if($student_account_status == 'pending'){
-        ?>
+
+                            }
+        else if($student_status == "unpaid"){
+
+            ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -226,12 +277,11 @@ else{
     <section id="slider">
         <div class="slider">
             <div class="slider-inner">
-                <h2>Account is not Approved.</h2>
+                <h2>Fees is not Paid.</h2>
                 <p>
-                    Kindly wait for next 24 hours or contact school.
-                    021-111-111-1
+                    Kindly pay the fees as soon as possible to resume your studies.
                 </p>
-                <a href="../index.php">
+                <a href="../index.html">
                     <button>
                         Back
                     </button>
@@ -299,7 +349,152 @@ else{
 
 </html>
 <?php
+
+        }
     }
+
+    
+
+    
+    
+        else if($student_account_status == 'pending'){
+        ?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type='text/css' href="../assets/style/styles.css">
+    <title>Sturdy's Inn</title>
+
+    <script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section id="menu">
+
+        <div class="topbar">
+            <div class="topbar-inner">
+                <a href="./index.html">News</a>
+                <a href="./index.html">Register A Student</a>
+                <a href="./index.html">Student Portal</a>
+            </div>
+        </div>
+        <div class="middlebar">
+            <div class="middlebar-inner">
+
+                <h1>Sturdy's Inn</h1>
+                <hr>
+                <h3>A Innovation in Progress</h3>
+            </div>
+        </div>
+        <div class="menubar">
+            <div class="menubar-inner">
+                <a href="">
+                    Home
+                </a>
+                <a href="">
+                    About Us
+                </a>
+                <a href="">
+                    News
+                </a>
+                <a href="">
+                    Blogs
+                </a>
+            </div>
+
+
+        </div>
+        <div class="logo">
+            <img src="./assets/images/logo.png" alt="">
+        </div>
+    </section>
+
+
+    <section id="slider">
+        <div class="slider">
+            <div class="slider-inner">
+                <h2>Account is not approved Yet.</h2>
+                <p>
+                    Kindly wait for 24 hours or contact your school.
+                </p>
+                <a href="../index.html">
+                    <button>
+                        Back
+                    </button>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="footer">
+        <div class="footer">
+            <div class="footerside">
+                <div class="footersidetop">
+                    <div class="footersidetopinner">
+                        <div class="footersidetopinnermenu">
+                            <a href="">Home</a>
+                            <a href="">About Us</a>
+                        </div>
+                        <div class="footersidetopinnermenu">
+                            <a href="">News</a>
+                            <a href="">Blog</a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="footersidebottom">
+                    <p>
+                        New M. A. Jinnah Rd, Jamshed Quarters Muslimabad, Karachi, Karachi City, Sindh 74800
+                    </p>
+                    <p>
+                        557-5677-6777
+                    </p>
+                </div>
+            </div>
+            <div class="footermiddle">
+                <img src="../assets/images/logo.png">
+            </div>
+            <div class="footerside">
+                <div class="footersidetop">
+                    <button>
+                        <i class="far fa-user-circle fa-2x"></i>
+                        <p>Portal Login</p>
+                    </button>
+                    <a href="">
+                        Register
+                    </a>
+                </div>
+                <div class="footersidebottom">
+                    <p>
+                        © 2020 Sturdy's Inns, School of Innovation. All Rights Reserved.
+                    </p>
+                    <p>
+                        Sturdy Cyber Software
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+</body>
+
+</html>
+
+
+<?php
+    }
+
     else if($student_account_status == 'reject'){
         ?>
 
@@ -435,140 +630,6 @@ else{
 </html>
 <?php
     }
-    else if($student_account_status == "approved"){
-        ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type='text/css' href="../assets/style/styles.css">
-    <title>Sturdy's Inn</title>
-
-    <script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <section id="menu">
-
-        <div class="topbar">
-            <div class="topbar-inner">
-                <a href="./index.html">News</a>
-                <a href="./index.html">Register A Student</a>
-                <a href="./index.html">Student Portal</a>
-            </div>
-        </div>
-        <div class="middlebar">
-            <div class="middlebar-inner">
-
-                <h1>Sturdy's Inn</h1>
-                <hr>
-                <h3>A Innovation in Progress</h3>
-            </div>
-        </div>
-        <div class="menubar">
-            <div class="menubar-inner">
-                <a href="">
-                    Home
-                </a>
-                <a href="">
-                    About Us
-                </a>
-                <a href="">
-                    News
-                </a>
-                <a href="">
-                    Blogs
-                </a>
-            </div>
-
-
-        </div>
-        <div class="logo">
-            <img src="./assets/images/logo.png" alt="">
-        </div>
-    </section>
-
-
-    <section id="slider">
-        <div class="slider">
-            <div class="slider-inner">
-                <h2>Fees is not Paid.</h2>
-                <p>
-                    Kindly pay the fees as soon as possible to resume your studies.
-                </p>
-                <a href="../index.html">
-                    <button>
-                        Back
-                    </button>
-                </a>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="footer">
-        <div class="footer">
-            <div class="footerside">
-                <div class="footersidetop">
-                    <div class="footersidetopinner">
-                        <div class="footersidetopinnermenu">
-                            <a href="">Home</a>
-                            <a href="">About Us</a>
-                        </div>
-                        <div class="footersidetopinnermenu">
-                            <a href="">News</a>
-                            <a href="">Blog</a>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="footersidebottom">
-                    <p>
-                        New M. A. Jinnah Rd, Jamshed Quarters Muslimabad, Karachi, Karachi City, Sindh 74800
-                    </p>
-                    <p>
-                        557-5677-6777
-                    </p>
-                </div>
-            </div>
-            <div class="footermiddle">
-                <img src="../assets/images/logo.png">
-            </div>
-            <div class="footerside">
-                <div class="footersidetop">
-                    <button>
-                        <i class="far fa-user-circle fa-2x"></i>
-                        <p>Portal Login</p>
-                    </button>
-                    <a href="">
-                        Register
-                    </a>
-                </div>
-                <div class="footersidebottom">
-                    <p>
-                        © 2020 Sturdy's Inns, School of Innovation. All Rights Reserved.
-                    </p>
-                    <p>
-                        Sturdy Cyber Software
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-
-</body>
-
-</html>
-<?php
-    }
-}
 }
 else
 {

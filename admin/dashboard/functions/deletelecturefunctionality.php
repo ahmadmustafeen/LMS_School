@@ -39,7 +39,7 @@ else{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -47,15 +47,16 @@ else{
     <div class="main">
         <div class="videobar">
             <div class="topbar">
-
-                <marquee behavior="" direction="" style="width: 60%;">
+                <a href="../index.php">
+                    <button type="submit">Back to Dashboard</button>
+                </a>
+                <marquee behavior="" direction="" style="width: 80%;">
                     <h2 style="color: white;">
                         Welcome to LMS of Sturdy's Inn
                     </h2>
                 </marquee>
 
-                <button type="submit">Edit Profile</button>
-                <a href="../logout.php">
+                <a href="../../logout.php">
                     <button type="submit">Logout</button>
                 </a>
 
@@ -65,7 +66,15 @@ else{
                     <div class="register-inner">
                         <h2>
                             Error in Deleting.
+
                         </h2>
+                        <h4 style="color:white;text-align:center;padding:20px">
+                            Following Lecture is not a valid one.. if it exists, kindly recheck your spelling. <br>
+                            <?php echo "$student_lecture in class $student_class of subject $student_subject"  ?>
+                        </h4>
+                        <a href="../index.php">
+                    <button type="submit">Back</button>
+                </a>
                     </div>
                 </div>
             </div>

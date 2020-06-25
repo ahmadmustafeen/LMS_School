@@ -20,14 +20,15 @@ if(isset($_SESSION['User']))
     <div class="main">
         <div class="videobar">
             <div class="topbar">
-
-                <marquee behavior="" direction="" style="width: 60%;">
+                <a href="./index.php">
+                    <button type="submit">Back to Dashboard</button>
+                </a>
+                <marquee behavior="" direction="" style="width: 80%;">
                     <h2 style="color: white;">
                         Welcome to LMS of Sturdy's Inn
                     </h2>
                 </marquee>
 
-                <button type="submit">Edit Profile</button>
                 <a href="../logout.php">
                     <button type="submit">Logout</button>
                 </a>
@@ -51,18 +52,19 @@ if(isset($_SESSION['User']))
                                             <option type="radio" id="class" name="admin_author"
                                                 placeholder="Select a Student Class" value="I" disabled selected>Select
                                                 A Query </option>
-
-                                                <option type="radio" id="class" name="admin_author"
+                                            <option type="radio" id="class" name="admin_author"
+                                                placeholder="Select a Student Class" value="IX">Add A Suject to class
+                                            </option>
+                                            <option type="radio" id="class" name="admin_author"
                                                 placeholder="Select a Student Class" value="I">Add A Lecture</option>
-                                                <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="IX">Add A Suject to class</option>
+
 
                                             <option type="radio" id="class" name="admin_author"
                                                 placeholder="Select a Student Class" value="II">Delete A Lecture
                                             </option>
 
                                             <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="III">View Student Details
+                                                placeholder="Select a Student Class" value="III">View Attendance
                                             </option>
 
                                             <option type="radio" id="class" name="admin_author"
@@ -80,9 +82,7 @@ if(isset($_SESSION['User']))
                                             <option type="radio" id="class" name="admin_author"
                                                 placeholder="Select a Student Class" value="VIII">Fee Department
                                             </option>
-                                            <option type="radio" id="class" name="admin_author"
-                                                placeholder="Select a Student Class" value="X">Create a Test
-                                            </option>
+
 
 
 

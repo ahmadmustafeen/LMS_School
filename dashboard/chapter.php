@@ -5,19 +5,68 @@ if(isset($_SESSION['User']))
 {
     $student_id = $_SESSION['User'];
     $subject_name = $_POST['subject'];
+    if(!$subject_name){
+        header("location:./index.php");
+    }
     $subject_name = strtolower($subject_name);
+    $waitlistcheck  = mysqli_query($con,"SELECT `student_account_status`,`student_class`,`student_section` FROM `waitlist` WHERE student_id = '$student_id'");
+    while($row = mysqli_fetch_assoc($waitlistcheck)){
+        $student_account_status= $row['student_account_status'];
+        $student_class= $row['student_class'];
+        $student_section= $row['student_section'];
+    }
+    $student_class = strtolower($student_class);
+    if($student_class != "ix" && $student_class != "x"){
+        $student_section = "";
+    }
+    $subject  = mysqli_query($con,"SELECT distinct `student_chapter` FROM `lecture_details` WHERE  student_class = '$student_class' and class_subject = '$subject_name'");
+   
+    $student_class = "class_".$student_class."_students".$student_section;
 
 
+    $student_info  = mysqli_query($con,"SELECT `student_name` FROM `$student_class` WHERE student_id = '$student_id'");
+    while($row = mysqli_fetch_assoc($student_info)){
+        $student_name = $row['student_name'];
+    }
 
     $newsWeb  = mysqli_query($con,"SELECT * FROM `news` ORDER BY date DESC");
-        $student_info  = mysqli_query($con,"SELECT `student_name`, `student_class` FROM `student_details` WHERE student_id = '$student_id'");
-    while($row = mysqli_fetch_assoc($student_info)){
-        $student_name= $row['student_name'];
-        $student_class = $row['student_class'];
+    //     $student_info  = mysqli_query($con,"SELECT `student_name`, `student_class` FROM `student_details` WHERE student_id = '$student_id'");
+    // while($row = mysqli_fetch_assoc($student_info)){
+    //     $student_name= $row['student_name'];
+    //     $student_class = $row['student_class'];
+    // }
+   
+    $class = explode("_",$student_class);
+    $student_class = strtoupper($class[1]);
+
+    $announcement_query  = mysqli_query($con,"SELECT  `announcement`, `date` FROM `announcement` WHERE  class = '$student_class'");
+    while($row = mysqli_fetch_assoc($announcement_query)){
+        $announcement = $row['announcement'];
+        $date = $row['date'];
+        $year = explode("-",$date);
     }
-    $subject  = mysqli_query($con,"SELECT `student_chapter` FROM `lecture_details` WHERE  student_class = '$student_class' and class_subject = '$subject_name'");
+
+
+    $account_status  = mysqli_query($con,"SELECT  `student_status` FROM `student_account` WHERE student_id = '$student_id'");
+    while($row = mysqli_fetch_assoc($account_status)){
+        $student_status = $row['student_status'];
+    }
+
+
+
+    $student_id = $_SESSION['User'];
+    $waitlistcheck  = mysqli_query($con,"SELECT `student_account_status`,`student_class`,`student_section` FROM `waitlist` WHERE student_id = '$student_id'");
+    while($row = mysqli_fetch_assoc($waitlistcheck)){
+        $student_account_status= $row['student_account_status'];
+        $student_class= $row['student_class'];
+        $student_section= $row['student_section'];
+    }
+
+
+    if($student_account_status == "approved"){
+        if($student_status=="paid"){
+
   
-    
 
 ?>
 <!DOCTYPE html>
@@ -56,15 +105,18 @@ if(isset($_SESSION['User']))
         </div>
         <div class="mainbar">
             <div class="topbar">
-
-                <marquee behavior="" direction="" style="width: 60%;">
+                <a href="./index.php" id="hide"><button> Back to Dashboard</button></a>
+                <marquee behavior="">
                     <h2 style="color: white;">
                         Welcome to LMS of Sturdy's Inn
                     </h2>
                 </marquee>
+                <div class="button">
+                    <a href="./index.php" id="show"><button> Back to Dashboard</button></a>
+                    <a href="#"><button> Edit Profile</button></a>
+                    <a href="../logout.php"><button> Logout</button></a>
+                </div>
 
-                <button type="submit">Edit Profile</button>
-                <a href="../logout.php"><button> Logout</button></a>
             </div>
             <div class="bar">
                 <div class="mainbarleft">
@@ -94,11 +146,11 @@ if(isset($_SESSION['User']))
                                         <span class="checkmark"></span>
                                     </label>
 
-                                  
+
                                     <?php 
                                     $check = $check +1;
                                     ?>
-                                
+
                                 </div>
                                 <?php
                                     if($check == 2){
@@ -122,11 +174,11 @@ if(isset($_SESSION['User']))
                 </form>
                 <div class="announcmentsection">
                     <div class="announcment">
-                        <h2>Test</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis placeat voluptate
-                            asperiores veritatis accusantium reiciendis nihil enim voluptatibus quaerat delectus?
+                        <h2>Announcment</h2>
+                        <p style="text-align:center">
+                            <?php echo $announcement ?>
                         </p>
+                        <h3 style="text-align:center;"><?php echo ($year[2]."-".$year[1]."-".$year[0]) ?></h3>
                     </div>
                 </div>
             </div>
@@ -164,6 +216,13 @@ if(isset($_SESSION['User']))
 
 </style>
 <?php
+}else{
+    header("location:./index.php");
+}
+    }
+    else{
+        header("location:./index.php");
+    }
 }
 else
 {
